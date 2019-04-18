@@ -66,15 +66,19 @@ void loop() {
             client.println("Connection: close");
             client.println();
 
-             client.println("<!DOCTYPE html><html>");
-            client.println("<read>") ;
+             client.println("<!DOCTYPE html>");
+             client.println("<html>");
+            client.println("<read>");
                            
-             client.println("<title>Página nery</title");
+             client.println("<title>P&aacutegina nery</title");
+             
              client.println("</read>");
              client.println("<body background=https://heypeppers.com.br/blog/wp-content/uploads/2017/04/74950-robotica-educacional-entenda-o-que-e-e-quais-sao-os-ganhos-no-seu-aprendizado-1.jpg > ");     
              client.println("</br>");
              client.println("<body>");
-             client.println("<H1><CENTER> Página Iury Nery </CENTER></H1>");
+             client.println("<H1><CENTER> P&aacutegina Iury Nery </CENTER></H1>");
+             client.println("<H1><CENTER> Controle da sua casa <CENTER></H1>");
+             client.println("<br>");
              client.println("</body>");
              client.println("</htmal>"); 
 
@@ -97,23 +101,23 @@ void loop() {
               output4State = "off";
               digitalWrite(output4, LOW);
             }
-             else if (header.indexOf("GET /4/on") >= 0) {
+             else if (header.indexOf("GET /3/on") >= 0) {
               Serial.println("Luz da garagem on");
               output3State = "on";
-              digitalWrite(output4, HIGH);
-            } else if (header.indexOf("GET /4/off") >= 0) {
+              digitalWrite(output3, HIGH);
+            } else if (header.indexOf("GET /3/off") >= 0) {
               Serial.println("Luz de garagem off");
               output3State = "off";
-              digitalWrite(output4, LOW);
+              digitalWrite(output3, LOW);
             }
-               else if (header.indexOf("GET /4/on") >= 0) {
+               else if (header.indexOf("GET /2/on") >= 0) {
               Serial.println("tomada ligado");
               output2State = "on";
-              digitalWrite(output4, HIGH);
-            } else if (header.indexOf("GET /4/off") >= 0) {
+              digitalWrite(output2, HIGH);
+            } else if (header.indexOf("GET /2/off") >= 0) {
               Serial.println("tomado desligado");
               output2State = "off";
-              digitalWrite(output4, LOW);
+              digitalWrite(output2, LOW);
             }
             
             // Display the HTML web page
@@ -129,7 +133,7 @@ void loop() {
             
             
             // Display current state, and ON/OFF buttons for GPIO 5  
-            client.println("<p>GPIO 5 - State " + output5State + "</p>");
+            client.println("<B><p>Sala - State " + output5State + "</p></B>");
             // If the output5State is off, it displays the ON button       
             if (output5State=="off") {
               client.println("<p><a href=\"/5/on\"><button class=\"button\">ON</button></a></p>");
@@ -138,29 +142,32 @@ void loop() {
             } 
                
             // Display current state, and ON/OFF buttons for GPIO 4  
-            client.println("<p>GPIO 4 - State " + output4State + "</p>");
+            client.println("<B><p>Quarto - State " + output4State + "</p></B>");
             // If the output4State is off, it displays the ON button       
             if (output4State=="off") {
               client.println("<p><a href=\"/4/on\"><button class=\"button\">ON</button></a></p>");
             } else {
               client.println("<p><a href=\"/4/off\"><button class=\"button button2\">OFF</button></a></p>");
             }
-             client.println("<p>GPIO 5 - State " + output3State + "</p>");
+             client.println("<B><p>Luz da garagem - State " + output3State + "</p></B>");
             // If the output5State is off, it displays the ON button       
             if (output3State=="off") {
-              client.println("<p><a href=\"/5/on\"><button class=\"button\">ON</button></a></p>");
+              client.println("<p><a href=\"/3/on\"><button class=\"button\">ON</button></a></p>");
             } else {
-              client.println("<p><a href=\"/5/off\"><button class=\"button button2\">OFF</button></a></p>");
+              client.println("<p><a href=\"/3/off\"><button class=\"button button2\">OFF</button></a></p>");
             } 
                
             // Display current state, and ON/OFF buttons for GPIO 4  
-            client.println("<p>GPIO 4 - State " + output2State + "</p>");
+            client.println("<B><p>Tomado - State " + output2State + "</p></B>");
             // If the output4State is off, it displays the ON button       
             if (output2State=="off") {
-              client.println("<p><a href=\"/4/on\"><button class=\"button\">ON</button></a></p>");
+              client.println("<p><a href=\"/2/on\"><button class=\"button\">ON</button></a></p>");
             } else {
-              client.println("<p><a href=\"/4/off\"><button class=\"button button2\">OFF</button></a></p>");
+              client.println("<p><a href=\"/2/off\"><button class=\"button button2\">OFF</button></a></p>");
             }
+            client.println("</b>");
+            client.println("<H3><CENTER> Acredita no seu potencial!! <CENTER></H3>");
+            
             client.println("</body></html>");
            
              
