@@ -63,7 +63,7 @@ void loop() {
             // and a content-type so the client knows what's coming, then a blank line:
             client.println("HTTP/1.1 200 OK");
             client.println("Content-type:text/html");
-            client.println("Connection: close");
+            client.println("Connection: close");    
             client.println();
 
              client.println("<!DOCTYPE html>");
@@ -80,7 +80,75 @@ void loop() {
              client.println("<H1><CENTER> Controle da sua casa <CENTER></H1>");
              client.println("<br>");
              client.println("</body>");
-             client.println("</htmal>"); 
+           //  client.println("</htmal>"); 
+
+
+client.println("<body>");
+
+client.println("<SCRIPT LANGUAGE=""JAVASCRIPT"">");
+client.println("<!--");
+
+client.println("var now = new Date();");
+client.println("var mName = now.getMonth() +1 ;");
+client.println("var dName = now.getDay() +1;");
+client.println("var dayNr = now.getDate();");
+client.println("var yearNr=now.getYear();");
+client.println("if(dName==1) {Day = ""Domingo"";}");
+client.println("if(dName==2) {Day = ""Segunda-feira"";}");
+client.println("if(dName==3) {Day = ""Terça-feira"";}");
+client.println("client.println(""if(dName==4) {Day = ""Quarta-feira"";}");
+client.println("if(dName==5) {Day = ""Quinta-feira"";}");
+client.println("if(dName==6) {Day = ""Sexta-feira"";}");
+client.println("if(dName==7) {Day = ""Sábado"";}");
+client.println("if(mName==1){Month = ""Janeiro"";}");
+client.println("if(mName==2){Month = ""Fevereiro"";}");
+client.println("if(mName==3){Month = ""Março"";}");
+client.println("if(mName==4){Month = ""Abril"";}");
+client.println("if(mName==5){Month = ""Maio"";}");
+client.println("if(mName==6){Month = ""Junho"";}");
+client.println("if(mName==7){Month = ""Julho"";}");
+client.println("if(mName==8){Month = ""Agosto"";}");
+client.println("if(mName==9){Month = ""Setembro"";}");
+client.println("if(mName==10){Month = ""Outubro"";}");
+client.println("if(mName==11){Month = ""Novembro"";}");
+client.println("if(mName==12){Month = ""Dezembro"";}");
+client.println("if(yearNr < 2000) {Year = 1900 + yearNr;}");
+client.println("else {Year = yearNr;}");
+client.println("var todaysDate =(" " + Day + ", " + dayNr + ""/"" + Month + ""/"" + Year);");
+
+client.println("document.write('  '+todaysDate);");
+
+client.println("//-->");
+client.println("</SCRIPT>");
+
+  
+client.println("<SPAN ID=""Clock"">00:00:00</SPAN>");
+
+client.println("<SCRIPT LANGUAGE=""JavaScript"">");
+client.println("<!--");
+  client.println("var Elem = document.getElementById(""Clock"");");
+client.println("  function Horario(){ ");
+   client.println(" var Hoje = new Date(); ");
+    client.println("var Horas = Hoje.getHours();"); 
+    client.println("if(Horas < 10){ "); 
+      client.println("Horas = ""0""+Horas; ");
+    client.println("} ");
+    client.println("var Minutos = Hoje.getMinutes();"); 
+    client.println("if(Minutos < 10){ ");
+      client.println("Minutos = ""0""+Minutos;"); 
+    client.println("} ");
+    client.println("var Segundos = Hoje.getSeconds();"); 
+    client.println("if(Segundos < 10){ ");
+      client.println("Segundos = "0"+Segundos;"); 
+    client.println("} ");
+    client.println("Elem.innerHTML = Horas+":"+Minutos+":"+Segundos;"); 
+    client.println("}"); 
+    client.println("window.setInterval(""Horario()"",1000);");
+client.println("//-->");
+client.println("</SCRIPT>");
+
+client.println("</body>");
+client.println("</html>");
 
                
             // turns the GPIOs on and off
